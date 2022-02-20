@@ -1,0 +1,30 @@
+- name: Install dependencies
+  hosts: all
+  roles:
+    - geerlingguy.pip
+
+- name: Deploy application
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Create a Docker environment file
+      ansible.builtin.template:
+        src: env.j2
+        dest: '.env'
+        mode: 0644
+    - name: Run container
+      community.docker.docker_container:
+        name: redmine
+        image: 'redmine:{{ redmine_version }}'
+        published_ports: '{{ redmine_port }}:3000'
+        restart_policy: always
+        restart: yes
+        container_default_behavior: no_defaults
+        pull: yes
+        env_file: .env
+
+- name: Install datadog
+  hosts: all
+  gather_facts: no
+  roles:
+    - datadog.datadog

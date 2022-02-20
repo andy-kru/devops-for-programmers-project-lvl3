@@ -1,0 +1,6 @@
+.env
+vault-password
+.terraform
+*.backup
+terraform.auto.tfvars
+terraform.tfvars

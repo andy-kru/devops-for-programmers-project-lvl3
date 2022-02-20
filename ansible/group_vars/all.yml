@@ -1,0 +1,21 @@
+pip_install_packages: ["docker"]
+
+redmine_port: "3000"
+redmine_version: "4.2.3-alpine"
+
+db_host: "terraform_placeholder"
+db_port: "terraform_placeholder"
+db_name: "terraform_placeholder"
+db_username: "terraform_placeholder"
+db_password: "terraform_placeholder"
+
+datadog_site: "datadoghq.eu"
+datadog_api_key: "terraform_placeholder"
+datadog_checks:
+  http_check:
+    init_config:
+    instances:
+      - name: redmine_status
+        url: "http://localhost:{{ redmine_port }}"
+        timeout: 5
+        method: GET
