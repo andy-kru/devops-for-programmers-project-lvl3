@@ -1,5 +1,5 @@
 variable "project_domain" {
-  default = "nsforge.xyz"
+  default = "nsforge.store"
 }
 
 variable "do_region" {
@@ -16,4 +16,8 @@ variable "do_web_size" {
 
 variable "do_db_size" {
   default = "db-s-1vcpu-1gb"
+}
+
+variable "redmine_port" {
+  default = "3000"
 }
