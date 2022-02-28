@@ -10,5 +10,12 @@ Deployment of Redmine application by using Terraform and Ansible playbook.
 ```sh
 $ make init # initialize Terraform
 $ make plan # show Terraform execution plan
-$ make apply # deploy infrastracture by using Terraform and provision with Ansible
+$ make apply # deploy infrastructure by using Terraform and provision with Ansible
 ```
+
+### Required variables, to be set by secrets
+
+* `do_token` - DigitalOcean token
+* `pvt_key` - path to a private key to interact with DigitalOcean droplets
+* `datadog_api_key` - DataDog API token
+* `datadog_app_key` - DataDog APP key
